@@ -4,9 +4,14 @@ import { Image, Icon, Menu, Divider, Message } from 'semantic-ui-react'
 import moment from "moment-timezone"
 
 class Navbar extends Component {
+	state = {
+		isPlay: false
+	}
+
 	start = () => {
 		const begin = moment().tz("Europe/Stockholm").format('YYYY-MM-DD HH:mm')
 		localStorage.setItem('begin', begin)
+		this.setState({isPlay: true})
 		alert("Started recording")
 	}
 
@@ -14,6 +19,7 @@ class Navbar extends Component {
 		const begin = localStorage.getItem('begin')
 		const end = moment().tz("Europe/Stockholm").format('YYYY-MM-DD HH:mm')
 		this.props.onStop({begin: begin, end: end})
+		this.setState({isPlay: false})
 		alert("Stopped recording.\nPlease add work details before submission.")
 	}
 
@@ -34,12 +40,13 @@ class Navbar extends Component {
 					<Menu.Item >
 						<Icon link inverted color='white' name='sign-out' size='big' onClick={() => this.logout()} />
 					</Menu.Item>
-					<Menu.Item >
+					{!this.state.isPlay ? <Menu.Item >
 						<Icon link inverted color='white' name='play' id='play' size='big' onClick={() => this.start()} />
-					</Menu.Item>
+					</Menu.Item> 
+					:
 					<Menu.Item >
 						<Icon link inverted color='white' name='stop' id='stop' size='big' onClick={() => this.stop()}/>
-					</Menu.Item>
+					</Menu.Item>}
 					<Message background='green' size='big'>{this.props.message}</Message>
 					<Menu.Item position='right'>
 						<Icon link inverted color='white' name='help' size='big' />
