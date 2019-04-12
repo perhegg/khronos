@@ -59,7 +59,7 @@ class Navbar extends Component {
 						/>
 					</Menu.Item>
 
-					<Menu.Item>
+					{!this.state.isPlay ? <Menu.Item>
 						<Popup
 							trigger={
 								<Icon
@@ -76,6 +76,7 @@ class Navbar extends Component {
 							style={{ height: "50px" }}
 						/>
 					</Menu.Item>
+					:
 					<Menu.Item>
 						<Popup
 							trigger={
@@ -92,7 +93,7 @@ class Navbar extends Component {
 							content="Stop Tracking"
 							style={{ height: "50px" }}
 						/>
-					</Menu.Item>
+					</Menu.Item>}
 					<Message background="green" size="big">
 						{this.props.message}
 					</Message>
