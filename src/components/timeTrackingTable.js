@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { Table, Input, Dropdown, Button, Segment, Header } from "semantic-ui-react";
+import {
+	Table,
+	Input,
+	Dropdown,
+	Button,
+	Segment,
+	Header
+} from "semantic-ui-react";
 import { saveData } from "../modules/kimaiSaveTimeData";
 import { getData } from "../modules/kimaiGetCustomerData";
 import { getProjectData } from "../modules/kimaiGetProjectData";
@@ -34,7 +41,7 @@ export class TimeTrackingTable extends Component {
 	}
 
 	async componentDidMount() {
-		await this.updateAllData()
+		await this.updateAllData();
 	}
 
 	async updateAllData() {
@@ -43,7 +50,7 @@ export class TimeTrackingTable extends Component {
 		await this.getAllActivities();
 		await getTimeData().then(
 			response => {
-				this.updateTimeData(response)
+				this.updateTimeData(response);
 			},
 			reason => {
 				console.log("something went wrong");
@@ -100,16 +107,20 @@ export class TimeTrackingTable extends Component {
 	}
 
 	handleChangeBegin(date) {
-    this.setState({
-			begin: moment(date).tz("Europe/Stockholm").format("YYYY-MM-DD HH:mm")
-    });
+		this.setState({
+			begin: moment(date)
+				.tz("Europe/Stockholm")
+				.format("YYYY-MM-DD HH:mm")
+		});
 	}
 
 	handleChangeEnd(date) {
-    this.setState({
-			end: moment(date).tz("Europe/Stockholm").format("YYYY-MM-DD HH:mm")
-    });
-  }
+		this.setState({
+			end: moment(date)
+				.tz("Europe/Stockholm")
+				.format("YYYY-MM-DD HH:mm")
+		});
+	}
 
 	renderTimeSheet() {
 		const timeData = this.state.timeData;
@@ -353,12 +364,12 @@ export class TimeTrackingTable extends Component {
 									<Input
 										id="hourlyRate"
 										placeholder="$"
-										onChange={e =>
-											{this.setState({
+										onChange={e => {
+											this.setState({
 												hourlyRate: e.target.value,
 												entrySaved: false
-											})}
-										}
+											});
+										}}
 									/>
 								</Table.Cell>
 								<Table.Cell>
@@ -368,7 +379,9 @@ export class TimeTrackingTable extends Component {
 										selection
 										defaultValue=""
 										options={customerOptions}
-										onChange={(e, { value }) => {this.handleCustomerChange(value)}}
+										onChange={(e, { value }) => {
+											this.handleCustomerChange(value);
+										}}
 									/>
 								</Table.Cell>
 								<Table.Cell>
@@ -378,7 +391,9 @@ export class TimeTrackingTable extends Component {
 										selection
 										defaultValue=""
 										options={projectOptions}
-										onChange={(e, { value }) => {this.handleProjectChange(value)}}
+										onChange={(e, { value }) => {
+											this.handleProjectChange(value);
+										}}
 									/>
 								</Table.Cell>
 								<Table.Cell>
@@ -388,7 +403,9 @@ export class TimeTrackingTable extends Component {
 										selection
 										defaultValue=""
 										options={taskOptions}
-										onChange={(e, { value }) => {this.handleActivityChange(value)}}
+										onChange={(e, { value }) => {
+											this.handleActivityChange(value);
+										}}
 									/>
 								</Table.Cell>
 								<Table.Cell>{saveButton}</Table.Cell>
