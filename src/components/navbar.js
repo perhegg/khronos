@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import logo from "../img/image.png";
-import { Image, Icon, Menu, Divider, Message, Popup } from "semantic-ui-react";
+import { Image, Icon, Menu, Message, Popup } from "semantic-ui-react";
 import moment from "moment-timezone";
 
 class Navbar extends Component {
 	state = {
 		isPlay: false,
-		time: 0,
-		timerOnGoing: false
+		time: 0
 	}
 	
 	start = () => {

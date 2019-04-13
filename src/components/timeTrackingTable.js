@@ -354,10 +354,10 @@ export class TimeTrackingTable extends Component {
 										id="hourlyRate"
 										placeholder="$"
 										onChange={e =>
-											this.setState({
+											{this.setState({
 												hourlyRate: e.target.value,
 												entrySaved: false
-											})
+											})}
 										}
 									/>
 								</Table.Cell>
@@ -368,7 +368,7 @@ export class TimeTrackingTable extends Component {
 										selection
 										defaultValue=""
 										options={customerOptions}
-										onChange={(e, { value }) => this.handleCustomerChange(value)}
+										onChange={(e, { value }) => {this.handleCustomerChange(value)}}
 									/>
 								</Table.Cell>
 								<Table.Cell>
@@ -378,7 +378,7 @@ export class TimeTrackingTable extends Component {
 										selection
 										defaultValue=""
 										options={projectOptions}
-										onChange={(e, { value }) => this.handleProjectChange(value)}
+										onChange={(e, { value }) => {this.handleProjectChange(value)}}
 									/>
 								</Table.Cell>
 								<Table.Cell>
@@ -388,7 +388,7 @@ export class TimeTrackingTable extends Component {
 										selection
 										defaultValue=""
 										options={taskOptions}
-										onChange={(e, { value }) => this.handleActivityChange(value)}
+										onChange={(e, { value }) => {this.handleActivityChange(value)}}
 									/>
 								</Table.Cell>
 								<Table.Cell>{saveButton}</Table.Cell>
