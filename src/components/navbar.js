@@ -5,16 +5,25 @@ import moment from "moment-timezone";
 
 class Navbar extends Component {
 	state = {
-		isPlay: false
+		isPlay: false,
+		time: 0,
+		timerOnGoing: false
 	}
-
+	
 	start = () => {
 		const begin = moment()
 			.tz("Europe/Stockholm")
 			.format("YYYY-MM-DD HH:mm");
 		localStorage.setItem("begin", begin);
 		this.setState({isPlay: true})
+		this.timer(true)
 		alert("Started recording");
+	};
+
+	timer = condition => {
+		condition
+			?	setInterval(() => this.setState({ time: this.state.time + 1}), 1000)
+			:	setInterval(() => this.setState({ time: 0 }))
 	};
 
 	stop = () => {
@@ -24,6 +33,7 @@ class Navbar extends Component {
 			.format("YYYY-MM-DD HH:mm");
 		this.props.onStop({ begin: begin, end: end });
 		this.setState({isPlay: false})
+		this.timer(false)
 		alert("Stopped recording.\nPlease add work details before submission.");
 	};
 
@@ -76,6 +86,7 @@ class Navbar extends Component {
 							style={{ height: "50px" }}
 						/>
 					</Menu.Item>
+					
 					:
 					<Menu.Item>
 						<Popup
@@ -94,6 +105,11 @@ class Navbar extends Component {
 							style={{ height: "50px" }}
 						/>
 					</Menu.Item>}
+					<Menu.Item>
+						<Message>
+							{this.state.time}
+						</Message>
+					</Menu.Item>
 					<Message background="green" size="big">
 						{this.props.message}
 					</Message>
