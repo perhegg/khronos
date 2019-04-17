@@ -5,14 +5,14 @@
 ## Khronos - CA final project
 
 ---
-We created an application based on a restful API which allows users to track working time acording to customer, project and task with the option to generate invoices for payment.
+We created an application based on a RESTful API which allows users to track working time according to customer, project and task with the option to generate invoices for payment.
 
 You gain access to an account by e-mailing our support staff with a request.
-You log in by clicking 'Get Started Here' or via the log in button in the header. The khronos logo in the header is your home button.
+You log in by clicking 'Get Started Here' or via the log in button in the header.
 
 Upon log in you are redirected to your dashboard which features Time Tracking, Statistics, and Invoicing.
 
-You're able to track your time by entering it manually via the time tracking section by entering a start time, end time, rate, selecting a customer, project and task.  Time can also be tracked by clicking the 'play' and 'stop' buttons in the header to record in real time. You also have access to previously recorded times here.
+You're able to track your time by entering it manually via the time tracking section by entering a start and end time via a drop down calendar,a rate, selecting a customer, project and task.  Time can also be tracked by clicking the 'play' and 'stop' buttons in the header to record in real time. You also have access to previously recorded times here.
 
 In the Statistics section there are bar graphs that show total working time and total money earned per month.
 
@@ -25,15 +25,19 @@ Under the repository name, click clone or download. Copy the clone URL for the r
 `git clone
 https://github.com/CraftAcademy/khronos`
 
-Installing
-Ensure that the gem versions on your local machine are as specified in the package.json.
+## Installing
+Ensure that the dependency versions on your local machine are as specified in the package.json.
+
 Run `yarn install` to install dependencies.
+
 Run `yarn start` to open in localhost.
 
 ---
 ## Testing
 We used cypress for e2e testing, and enzyme for feature tests.
+
 Run `yarn cy:open` to run e2e testing.
+
 Run `yarn run test` to run enzyme testing.
 
 ---
