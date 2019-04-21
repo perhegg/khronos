@@ -57,13 +57,13 @@ export class TimeTrackingTable extends Component {
 		let activities = this.state.fetchedAllActivities;
 		let newTimeData = timeData.filter(timeSheet => {
 			let pId = timeSheet.project;
-			let pIndex = projects.findIndex(project => project.value == pId);
+			let pIndex = projects.findIndex(project => project.value === pId);
 			timeSheet.project = projects[pIndex].text;
 			let cId = projects[pIndex].customer;
-			let cIndex = customers.findIndex(customer => customer.value == cId);
+			let cIndex = customers.findIndex(customer => customer.value === cId);
 			timeSheet.customer = customers[cIndex].text;
 			let aId = timeSheet.activity;
-			let aIndex = activities.findIndex(activity => activity.value == aId);
+			let aIndex = activities.findIndex(activity => activity.value === aId);
 			timeSheet.activity = activities[aIndex].text;
 			return timeSheet;
 		});
@@ -220,7 +220,7 @@ export class TimeTrackingTable extends Component {
 	async getCustomerProjects(value) {
 		const customerId = value;
 		let customerProjects = this.state.fetchedAllProjects.filter(
-			project => project.customer == customerId && project.visible
+			project => project.customer === customerId && project.visible
 		);
 
 		let projectsArray = customerProjects.map(project => {

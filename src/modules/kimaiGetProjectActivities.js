@@ -3,7 +3,7 @@ import axios from "axios";
 const getProjectActivities = projectId => {
 	const apiUrl = "https://demo.kimai.org/api";
 	let activityUrl;
-	if (projectId == "all") {
+	if (projectId === "all") {
 		activityUrl = apiUrl + "/activities?visible=3";
 	} else {
 		activityUrl = apiUrl + "/activities?project=" + projectId;
