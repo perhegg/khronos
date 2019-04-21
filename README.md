@@ -32,6 +32,13 @@ Run `yarn install` to install dependencies.
 
 Run `yarn start` to open in localhost.
 
+As a trial you can log in with the following credentials:
+
+user: susan_super
+
+password: api_kitten
+
+
 ---
 ## Testing
 We used cypress for e2e testing, and enzyme for feature tests.
