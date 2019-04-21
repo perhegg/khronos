@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # khronos
 
 ## https://khronostimetracking.netlify.com/
@@ -53,14 +54,14 @@ We continuously deploy with netlify at https://khronostimetracking.netlify.com/
 
 ---
 ## Built with
-## Built With:
 - [React](https://github.com/facebook/create-react-app)
 - [Axios](https://github.com/axios/axios)
-- [Semantic-UI-React](https://github.com/Semantic-Org/Semantic-UI-React)
+- [Semantic UI](https://github.com/Semantic-Org/Semantic-UI-React)
 - [Chart js](https://github.com/chartjs/Chart.js)
-- [Moment-timezone](https://github.com/moment/moment-timezone)
-- [React-datepicker](https://github.com/Hacker0x01/react-datepicker/)
+- [Moment Timezone]()
+- [React Datepicker]()
 ---
+=======
 # Khronos - Time-tracking App
 April 2019 Final Course Project
 
@@ -93,11 +94,21 @@ To run end-to-end Cypress tests run simultaneously `yarn start` and `yarn cy:ope
 ## Deployment:
 Deployed with Netlify.
 
+## Built With:
+- [React](https://github.com/facebook/create-react-app)
+- [Axios](https://github.com/axios/axios)
+- [Semantic-UI-React](https://github.com/Semantic-Org/Semantic-UI-React)
+- [Chart js](https://github.com/chartjs/Chart.js)
+- [Moment-timezone](https://github.com/moment/moment-timezone)
+- [React-datepicker](https://github.com/Hacker0x01/react-datepicker/)
+
+>>>>>>> bd8449369a9b049df700a26fc4510f9c374bd747
 ## Authors
 - [Laura Reale](https://github.com/LauraRe)
 - [Viktor Olsson](https://github.com/vick3d)
 - [Per Eriksson](https://github.com/perhegg)
 - [Amanda Gibson](https://github.com/amandagibson)
+<<<<<<< HEAD
 ---
 ## License
 - MIT License
@@ -105,3 +116,8 @@ Deployed with Netlify.
 ---
 ## Acknowledgments
 Special thanks to our awesome coach [Magnus](https://github.com/magnus-thor)!
+=======
+
+## License
+MIT license
+>>>>>>> bd8449369a9b049df700a26fc4510f9c374bd747
