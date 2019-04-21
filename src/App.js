@@ -27,7 +27,7 @@ class App extends Component {
 			fetchAllCustomers: [],
 			begin: "",
 			end: "",
-			renderTimeTrackingTable: false
+			// renderTimeTrackingTable: false
 		};
 	}
 
