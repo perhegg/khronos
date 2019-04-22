@@ -6,8 +6,6 @@ import { getProjectActivities } from "../modules/kimaiGetProjectActivities";
 import { Button, Table, Form, Container, Header, Radio } from 'semantic-ui-react'
 import moment from "moment-timezone";
 
-
-
 class Invoicing extends Component {
 	constructor(props) {
 		super(props);
@@ -47,7 +45,7 @@ class Invoicing extends Component {
 		const entryIndex = timeData.findIndex(savedEntry => savedEntry.id == entry.currentTarget.parentElement.parentElement.id)
 		const item = timeData[entryIndex]
 		let invoiceLines = this.state.invoiceLines
-		if(invoiceLines.includes(item)) {
+		if (invoiceLines.includes(item)) {
 			const itemIndex = invoiceLines.findIndex(savedEntry => savedEntry.id === item.id)
 			invoiceLines.splice(itemIndex, 1)
 		} else {
@@ -57,35 +55,35 @@ class Invoicing extends Component {
 		let duration;
 		let earnings;
 
-		if(invoiceLines.length === 0) {
+		if (invoiceLines.length === 0) {
 			duration = 0
 			earnings = 0
 
 		} else {
 			duration = invoiceLines.reduce((acc, currV) => {
-					return acc + currV.duration;
+				return acc + currV.duration;
 			}, 0);
 			earnings = invoiceLines.reduce((acc, currV) => {
 				return acc + currV.rate;
-		}, 0);
+			}, 0);
 		}
 
-		let rawTime = moment.duration(duration*1000)
+		let rawTime = moment.duration(duration * 1000)
 		let hours = rawTime.hours();
 		let minutes = rawTime.minutes();
 		let humanizedTime = '' + hours + ' hours ' + minutes + ' minutes.'
 
-		this.setState({aggregatedDuration: humanizedTime})
-		this.setState({aggregatedEarnings: Math.floor(earnings)})
-		this.setState({invoiceLines: invoiceLines})
+		this.setState({ aggregatedDuration: humanizedTime })
+		this.setState({ aggregatedEarnings: Math.floor(earnings) })
+		this.setState({ invoiceLines: invoiceLines })
 	}
 
 	createInvoice() {
-		this.setState({renderInvoice: true})
+		this.setState({ renderInvoice: true })
 	}
 
 	invoiceHandler() {
-		this.setState({renderInvoice: false, invoiceLines: [], aggregatedDuration: '', aggregatedEarnings: '', invoiceMessage: ''})
+		this.setState({ renderInvoice: false, invoiceLines: [], aggregatedDuration: '', aggregatedEarnings: '', invoiceMessage: '' })
 	}
 
 	handleCustomerChange(value) {
@@ -109,7 +107,7 @@ class Invoicing extends Component {
 		await this.getAllActivities(value);
 		await getTimeData().then(
 			response => {
-			 this.updateTimeData(response);
+				this.updateTimeData(response);
 			},
 			reason => {
 				console.log("something went wrong");
@@ -252,12 +250,10 @@ class Invoicing extends Component {
 		this.setState({ fetchedActivities: activitiesArray });
 	}
 
-
-
-	renderTimeSheet(customer, project , activity) {
+	renderTimeSheet(customer, project, activity) {
 		const timeData = this.state.timeData;
 		let customerData;
-		if(customer && !project && !activity) {
+		if (customer && !project && !activity) {
 			customerData = timeData.filter(entry => entry.customerId === customer);
 		} else if (customer && project && !activity) {
 			customerData = timeData.filter(entry => entry.customerId === customer && entry.projectId === project);
@@ -281,16 +277,13 @@ class Invoicing extends Component {
 					<Table.Cell>{entry.customer}</Table.Cell>
 					<Table.Cell>{entry.project}</Table.Cell>
 					<Table.Cell>{entry.activity}</Table.Cell>
-					<Table.Cell><Radio toggle className="toggle" onChange={this.invoiceToggle.bind(this)}/></Table.Cell>
+					<Table.Cell><Radio toggle className="toggle" onChange={this.invoiceToggle.bind(this)} /></Table.Cell>
 				</Table.Row>
 			);
 		});
 	}
 
-
-
-
-  render() {
+	render() {
 		const aggregatedDuration = this.state.aggregatedDuration;
 		const aggregatedEarnings = this.state.aggregatedEarnings;
 		const invoiceMessage = this.state.invoiceMessage;
@@ -301,166 +294,168 @@ class Invoicing extends Component {
 		let render;
 		let timeSheet = this.renderTimeSheet(this.state.customer, this.state.project, this.state.activity);
 
-			if (this.state.renderInvoice) {
-				render = (
-					<>
+		if (this.state.renderInvoice) {
+			render = (
+				<>
 					<Container textAlign="left">
-					<Button inverted color='green' onClick={this.invoiceHandler.bind(this)}>Back</Button>
+						<Button inverted color='green' onClick={this.invoiceHandler.bind(this)}>Back</Button>
 					</Container>
 					<div className="invoice-box">
-					<table cellpadding="0" cellspacing="0">
+						<table cellpadding="0" cellspacing="0">
 							<tr className="top">
-									<td colspan="2">
-											<table>
-													<tr>
-															<td className="title">
-															</td>
-															<td>
-																	Invoice #: 123<br></br>
-																	Created: April 13, 2019<br></br>
-																	Due: April 23, 2019<br></br>
-															</td>
-													</tr>
-											</table>
-									</td>
+								<td colspan="2">
+									<table>
+										<tr>
+											<td className="title">
+											</td>
+											<td>
+												Invoice #: 123<br></br>
+												Created: April 13, 2019<br></br>
+												Due: April 23, 2019<br></br>
+											</td>
+										</tr>
+									</table>
+								</td>
 							</tr>
 
 							<tr className="information">
-									<td colspan="2">
-											<table>
-													<tr>
-															<td>
-																	Khronos Inc.<br></br>
-																	Open Labs<br></br>
-																	11428 STOCKHOLM<br></br>
-															</td>
+								<td colspan="2">
+									<table>
+										<tr>
+											<td>
+												Khronos Inc.<br></br>
+												Open Labs<br></br>
+												11428 STOCKHOLM<br></br>
+											</td>
 
-															<td>
-																	Customer<br></br>
-																	John Doe<br></br>
-																	john@example.com<br></br>
-															</td>
-													</tr>
-											</table>
-									</td>
+											<td>
+												Customer<br></br>
+												John Doe<br></br>
+												john@example.com<br></br>
+											</td>
+										</tr>
+									</table>
+								</td>
 							</tr>
 							<tr className="heading">
-									<td>
-											Payment Method
+								<td>
+									Payment Method
 									</td>
-									<td>
-											BankGiro #
+								<td>
+									BankGiro #
 									</td>
 							</tr>
 							<tr className="details">
-									<td>
-										BankGiro
+								<td>
+									BankGiro
 									</td>
-									<td>
-											1337-1337
+								<td>
+									1337-1337
 									</td>
 							</tr>
 							<tr className="heading">
-									<td>
-											Total Working Hours
+								<td>
+									Total Working Hours
 									</td>
-									<td>
-											Price
+								<td>
+									Price
 									</td>
 							</tr>
 							<tr className="item">
-									<td>
-										 <p> {aggregatedDuration}</p>
-									</td>
-									<td>
-											 {aggregatedEarnings}
-									</td>
+								<td>
+									<p> {aggregatedDuration}</p>
+								</td>
+								<td>
+									{aggregatedEarnings}
+								</td>
 							</tr>
 
 							<tr className="total">
-									<td>{invoiceMessage}</td>
-									<td>
-										 Total: ${aggregatedEarnings}
-									</td>
+								<td>{invoiceMessage}</td>
+								<td>
+									Total: ${aggregatedEarnings}
+								</td>
 							</tr>
-					</table>
-			</div>
-			</>
-		)} else {
+						</table>
+					</div>
+				</>
+			)
+		} else {
 			render = (
 				<>
-				<Container>
-					<Form>
-						<Form.Group widths='equal'>
-							<Form.Select
-								fluid
-								label='Customer'
-								className="customer"
-								options={customerOptions}
-								placeholder='Customer name'
-								onChange={(e, { value }) => this.handleCustomerChange(value)}
+					<Container>
+						<Form>
+							<Form.Group widths='equal'>
+								<Form.Select
+									fluid
+									label='Customer'
+									className="customer"
+									options={customerOptions}
+									placeholder='Customer name'
+									onChange={(e, { value }) => this.handleCustomerChange(value)}
 								/>
-							<Form.Select
-								fluid
-								label='Project'
-								className="project"
-								options={projectOptions}
-								placeholder='Project name'
-								onChange={(e, { value }) => this.handleProjectChange(value)}
+								<Form.Select
+									fluid
+									label='Project'
+									className="project"
+									options={projectOptions}
+									placeholder='Project name'
+									onChange={(e, { value }) => this.handleProjectChange(value)}
+								/>
+								<Form.Select
+									fluid
+									label='Task'
+									className="task"
+									options={taskOptions}
+									placeholder='Task name'
+									onChange={(e, { value }) => this.handleActivityChange(value)}
+								/>
+							</Form.Group>
+							<Form.Group widths='equal'>
+								<Form.Field><label>Duration</label><p>{aggregatedDuration}</p></Form.Field>
+								<Form.Field><label>Total Earnings</label><p>{aggregatedEarnings}</p></Form.Field>
+							</Form.Group>
+							<Form.TextArea
+								label='Free text'
+								placeholder='If you need to have some free text write it here'
+								onChange={e => this.setState({ invoiceMessage: e.currentTarget.value })}
 							/>
-							<Form.Select
-								fluid
-								label='Task'
-								className="task"
-								options={taskOptions}
-								placeholder='Task name'
-								onChange={(e, { value }) => this.handleActivityChange( value)}
-							/>
-						</Form.Group>
-						<Form.Group widths='equal'>
-							<Form.Field><label>Duration</label><p>{aggregatedDuration}</p></Form.Field>
-							<Form.Field><label>Total Earnings</label><p>{aggregatedEarnings}</p></Form.Field>
-						</Form.Group>
-						<Form.TextArea
-							label='Free text'
-							placeholder='If you need to have some free text write it here'
-							onChange={e => this.setState({invoiceMessage: e.currentTarget.value})}
-							/>
-						<Form.Button inverted color='green' name="create_invoice" onClick={this.createInvoice.bind(this)}>Create Invoice</Form.Button>
-					</Form>
-				</Container>
-				<Container>
-				<Table celled textAlign="center">
-				 	<Table.Header>
-					 <Table.Row name="tableRow">
-							<Table.HeaderCell>Start Time</Table.HeaderCell>
-							<Table.HeaderCell>End Time</Table.HeaderCell>
-							<Table.HeaderCell>Earnings</Table.HeaderCell>
-							<Table.HeaderCell>Customer</Table.HeaderCell>
-							<Table.HeaderCell>Project</Table.HeaderCell>
-							<Table.HeaderCell>Task</Table.HeaderCell>
-							<Table.HeaderCell>Invoice</Table.HeaderCell>
-						</Table.Row>
-					</Table.Header>
-					<Table.Body>
-						{timeSheet}
-					</Table.Body>
-				</Table>
-				</Container>
-			</>
-			)}
+							<Form.Button inverted color='green' name="create_invoice" onClick={this.createInvoice.bind(this)}>Create Invoice</Form.Button>
+						</Form>
+					</Container>
+					<Container>
+						<Table celled textAlign="center">
+							<Table.Header>
+								<Table.Row name="tableRow">
+									<Table.HeaderCell>Start Time</Table.HeaderCell>
+									<Table.HeaderCell>End Time</Table.HeaderCell>
+									<Table.HeaderCell>Earnings</Table.HeaderCell>
+									<Table.HeaderCell>Customer</Table.HeaderCell>
+									<Table.HeaderCell>Project</Table.HeaderCell>
+									<Table.HeaderCell>Task</Table.HeaderCell>
+									<Table.HeaderCell>Invoice</Table.HeaderCell>
+								</Table.Row>
+							</Table.Header>
+							<Table.Body>
+								{timeSheet}
+							</Table.Body>
+						</Table>
+					</Container>
+				</>
+			)
+		}
 
-    return (
+		return (
 			<>
-			<Container>
-			<Header as="h1" textAlign="center"  name="header">
-				Invoicing
+				<Container>
+					<Header as="h1" textAlign="center" name="header">
+						Invoicing
 			</Header>
-			</Container>
-			{render}
+				</Container>
+				{render}
 			</>
 		)
-  }
+	}
 }
 
 export default Invoicing
