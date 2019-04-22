@@ -1,11 +1,15 @@
-# khronos
+# Khronos
 
 ## https://khronostimetracking.netlify.com/
 
-## Khronos - CA final project
+As a trial you can log in with the following credentials:
+
+user: susan_super
+
+password: api_kitten
 
 ---
-We created an application based on a RESTful API which allows users to track working time according to customer, project and task with the option to generate printable invoices for payment. The application is based on Kimai RESTful API (https://demo.kimai.org/api/doc).
+As our final two week project at CraftAcademy we created an application based on a RESTful API which allows users to track working time according to customer, project and task with the option to generate printable invoices for payment. The application is based on Kimai RESTful API (https://demo.kimai.org/api/doc).
 
 You gain access to an account by e-mailing our support staff with a request.
 You log in by clicking 'Get Started Here' or via the log in button in the header.
@@ -30,12 +34,6 @@ Ensure that the dependency versions on your local machine are as specified in th
 Run `yarn install` to install dependencies.
 
 Run `yarn start` to open in localhost.
-
-As a trial you can log in with the following credentials:
-
-user: susan_super
-
-password: api_kitten
 
 ---
 ## Testing
