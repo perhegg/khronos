@@ -48,34 +48,6 @@ class Navbar extends Component {
 		alert("Stopped recording.\nPlease add work details before submission.");
 	}
 
-	// start = () => {
-	// 	const begin = moment()
-	// 		.tz("Europe/Stockholm")
-	// 		.format("YYYY-MM-DD HH:mm");
-	// 	localStorage.setItem("begin", begin);
-	// 	this.setState({ isPlay: true });
-	// 	this.timer(true);
-	// 	alert("Started recording");
-	// };
-
-	// timer = condition => {
-	// 	debugger;
-	// 	condition
-	// 		? setInterval(() => this.setState({ time: this.state.time + 1 }), 1000)
-	// 		: setInterval(() => this.setState({ time: 0 }));
-	// };
-
-	// stop = () => {
-	// 	const begin = localStorage.getItem("begin");
-	// 	const end = moment()
-	// 		.tz("Europe/Stockholm")
-	// 		.format("YYYY-MM-DD HH:mm");
-	// 	this.props.onStop({ begin: begin, end: end });
-	// 	this.setState({ isPlay: false });
-	// 	this.timer(false);
-	// 	alert("Stopped recording.\nPlease add work details before submission.");
-	// };
-
 	logout = () => {
 		localStorage.removeItem("Name");
 		localStorage.removeItem("Password");
