@@ -6,8 +6,6 @@ import { getProjectActivities } from "../modules/kimaiGetProjectActivities";
 import { Button, Table, Form, Container, Header, Radio } from 'semantic-ui-react'
 import moment from "moment-timezone";
 
-
-
 class Invoicing extends Component {
 	constructor(props) {
 		super(props);
@@ -252,8 +250,6 @@ class Invoicing extends Component {
 		this.setState({ fetchedActivities: activitiesArray });
 	}
 
-
-
 	renderTimeSheet(customer, project, activity) {
 		const timeData = this.state.timeData;
 		let customerData;
@@ -286,9 +282,6 @@ class Invoicing extends Component {
 			);
 		});
 	}
-
-
-
 
 	render() {
 		const aggregatedDuration = this.state.aggregatedDuration;
