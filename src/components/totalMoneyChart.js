@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { getTimeData } from "../modules/kimaiGetTimeData";
-// import { red } from 'ansi-colors';
 
 class TotalMoneyChart extends Component {
 	state = {

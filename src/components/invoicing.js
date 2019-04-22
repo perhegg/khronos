@@ -44,7 +44,7 @@ class Invoicing extends Component {
 	}
 	invoiceToggle(entry) {
 		const timeData = this.state.timeData;
-		const entryIndex = timeData.findIndex(savedEntry => savedEntry.id === entry.currentTarget.parentElement.parentElement.id)
+		const entryIndex = timeData.findIndex(savedEntry => savedEntry.id == entry.currentTarget.parentElement.parentElement.id)
 		const item = timeData[entryIndex]
 		let invoiceLines = this.state.invoiceLines
 		if(invoiceLines.includes(item)) {
@@ -123,15 +123,15 @@ class Invoicing extends Component {
 		let activities = this.state.fetchedAllActivities;
 		let newTimeData = timeData.filter(timeSheet => {
 			let pId = timeSheet.project;
-			let pIndex = projects.findIndex(project => project.value === pId);
+			let pIndex = projects.findIndex(project => project.value == pId);
 			timeSheet.project = projects[pIndex].text;
 			timeSheet.projectId = projects[pIndex].value
 			let cId = projects[pIndex].customer;
-			let cIndex = customers.findIndex(customer => customer.value === cId);
+			let cIndex = customers.findIndex(customer => customer.value == cId);
 			timeSheet.customer = customers[cIndex].text;
 			timeSheet.customerId = customers[cIndex].value
 			let aId = timeSheet.activity;
-			let aIndex = activities.findIndex(activity => activity.value === aId);
+			let aIndex = activities.findIndex(activity => activity.value == aId);
 			timeSheet.activity = activities[aIndex].text;
 			timeSheet.activityId = activities[aIndex].value;
 			return timeSheet;
@@ -226,7 +226,7 @@ class Invoicing extends Component {
 	async getCustomerProjects(value) {
 		const customerId = value;
 		let customerProjects = this.state.fetchedAllProjects.filter(
-			project => project.customer === customerId && project.visible
+			project => project.customer == customerId && project.visible
 		);
 
 		let projectsArray = customerProjects.map(project => {
